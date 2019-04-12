@@ -1,0 +1,2 @@
+@ECHO OFF
+"C:\Program Files\Atmel\AVR Tools\AvrAssembler2\avrasm2.exe" -S "D:\Developers\Elektronika\MCU\ATMEL\AVR\ATmega16\AVR-OS\0.1\labels.tmp" -fI -W+ie -o "D:\Developers\Elektronika\MCU\ATMEL\AVR\ATmega16\AVR-OS\0.1\AVR-OS.hex" -d "D:\Developers\Elektronika\MCU\ATMEL\AVR\ATmega16\AVR-OS\0.1\AVR-OS.obj" -e "D:\Developers\Elektronika\MCU\ATMEL\AVR\ATmega16\AVR-OS\0.1\AVR-OS.eep" -m "D:\Developers\Elektronika\MCU\ATMEL\AVR\ATmega16\AVR-OS\0.1\AVR-OS.map" "D:\Developers\Elektronika\MCU\ATMEL\AVR\ATmega16\AVR-OS\0.1\AVR-OS.asm"

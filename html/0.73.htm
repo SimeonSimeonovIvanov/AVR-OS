@@ -1,0 +1,12 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=windows-1251" http-equiv="content-type"><title>AVR-OS 0.73</title><script charset="utf-8" id="injection_graph_func" src="0.73_files/injection_graph_func.js"></script></head><body>
+
+<p style="margin-top: 0pt; margin-bottom: 0pt;"><span lang="bg"><b>02</b></span><b>.0<span lang="bg">6</span>.200<span lang="bg">8</span></b></p>
+
+<p style="margin-top: 0pt; margin-bottom: 0pt;">&nbsp;&nbsp;&nbsp; След година застой по проекта най-накрая има развитие. В описанието на версия <a style="font-weight: bold;" href="../html/0.72.htm">0.72</a> бях споменал, че</p><p style="margin-top: 0pt; margin-bottom: 0pt;">смятам да използвам свързан списак за създаване/премахване на процеси. Но по онова време реализацията на мениджъра на паметта (<span style="font-weight: bold;">MM</span>) все още не позволяваше такива "екстри" (поне не без големи жертви). Но от &nbsp;<span style="font-style: italic;">16.01.2008</span>г. до <span style="font-style: italic;">17.01.2008г.</span> (засега) пренаписах <span style="font-weight: bold;">&nbsp;MM </span>като новата версия позволява свободно заделяне и освобождаване ан шамет по стандартен начин: чрез функциите <span style="font-weight: bold;">malloc</span>
+и free. Въпреки, че беше постигната почти 100% съвместимост със старите
+версии, ядрото реално беше пренаписано. Най-големи промени имаше във
+файла &nbsp;<a href="../0.73/src/kernel/task.inc"><span style="font-weight: bold;">task.inc</span></a>. В момента &nbsp;<span style="font-weight: bold;">MM</span>, физически разположен в <a style="font-weight: bold;" href="../0.73/src/kernel/mm.inc">mm.inc</a>,
+е фундамента на цялата операциона. Всъщност в това няма нищо учудващо.
+Всъщност по-вече информация по работата върху версия &nbsp;<span style="font-weight: bold;">0.73</span> се намира във файла <a style="font-weight: bold;" href="../0.73/ReadMe.txt">ReadMe.txt</a>.<a style="font-weight: bold;" href="../0.73/0.73.rar"><span style="text-decoration: underline;"><br><br><br>Кода на версия 0.73</span></a></p></body></html>

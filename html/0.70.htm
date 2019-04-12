@@ -1,0 +1,114 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>The^day^of^DooM:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AVR-OS 0.70</title>
+</head>
+
+<body>
+
+<p><b>02.07.2006<br>
+<span lang="bg">&nbsp;&nbsp;&nbsp; </span></b>1) <span lang="bg">Промених 
+драйвера на дисплея. За повече информация
+<a href="http://forums.bgdev.org/index.php?showtopic=14423">тук</a> (има някой 
+малки различия, но за тях по-късно)</span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><b>26 Юни 2006<br>
+</b>&nbsp;&nbsp;&nbsp; 1) Кода и беше прехвлърлен успешно към версия <b>
+<a href="0.71.htm">0.71</a></b>. Засега смятам да ги държа като отделни версии 
+впреки въвместимоста им<br>
+&nbsp;&nbsp;&nbsp; на ниво потребител, на по-късен етап от тестове <b>0.71</b> 
+ще заеме мястотото на <b>0.70</b>. Смятам отсега номера на версията да се вдига<br>
+&nbsp;&nbsp;&nbsp; само при условие, че имаме несмъвместимост със старата или 
+изключителни промени по кода.<br>
+&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0"><b>19 <span lang="bg">Юни 2006</span></b></p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; 1) <span lang="bg">
+Имаше малки промени в часта с прекъсванията. Преди </span><b>OSRunTaskIRQF</b>
+<span lang="bg">променяше съдържанието на няколко регистъра <br>
+&nbsp;&nbsp;&nbsp; преди да извика обработващата рпекъсването програма. Сега 
+вече няма такива номера. Също и при самото извикване се дига <br>
+&nbsp;&nbsp;&nbsp; бита грижещ се за глобално разрешаване/забраняване на 
+прекъсванията. Целта на промените е софтуерното&nbsp; обработване на&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; прекъсването са е максимално близко до хардуерното.</span></p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0"><b>15 <span lang="bg">Юни 2006</span></b></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="bg">&nbsp;&nbsp;&nbsp; </span>
+2) <span lang="bg">Това си плачи за нова версия но засега ще се въздържа - 
+модула за управление на прекъсванията беше променен коренно. За&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; повече 
+информация <b><a href="0.70_IRQ.htm">тук</a></b></span></p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; <span lang="bg">1) 
+Заспала работа... Два дена за един глупав пропуск :) Най-сетне </span><b>OSExit</b>
+<span lang="bg">заработи. Промених кода на </span><b>OSRemoveTaskF</b> -
+<span lang="bg">вече в&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp; него се намира извикването за изход от процеса (рпеди се извикваше самата 
+функция а сега само часта с премахването на </span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="bg">&nbsp;&nbsp;&nbsp; 
+процес). А и бъга беше в това, че използвах стека на процеса който желая да 
+премахна а същевремно върху него се копира стека&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="bg">&nbsp;&nbsp;&nbsp; на 
+следващия процес... Решението беше просто - стековия указател се насочваше към 
+стека на операционата. Има и някой други </span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="bg">&nbsp;&nbsp;&nbsp; 
+промени в <b>Task Manager </b></span>- <span lang="bg">премахна се проверката за 
+запазване на процес понеже след премахването му се прескача </span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="bg">&nbsp;&nbsp;&nbsp; 
+директно към часта за зареждане на следващия.</span></p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0"><b>14 Юни 2006</b></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="en-us">&nbsp;&nbsp;&nbsp; 
+2</span>) Отново проблем с <span lang="en-us"><b>OSExit</b>...</span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="en-us">&nbsp;&nbsp;&nbsp; 
+1) </span>Добавена е функция за смяна на приоритета на процес (<b>OSChangeTaskPriorityF</b>)</p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0"><b>13 Юни 2006</b><span lang="en-us">:</span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="en-us">&nbsp;&nbsp;&nbsp; 
+2)</span><span lang="bg"> Замених подпрограмите за времезакъснение (</span>lib/delay)
+<span lang="bg">със стария (и стабилен;) ) код :)</span></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="en-us">&nbsp;&nbsp;&nbsp; 
+1)&nbsp; </span>Проблема с <span lang="en-us"><b>OSExit</b> </span>е решен :) като от 
+стойността на стековия указател се извади </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0"><b>12 Юни 2006</b>:</p>
+
+<p style="line-height: 150%; margin-top: 0; margin-bottom: 0">
+<span lang="en-us">&nbsp;&nbsp;&nbsp; </span>Има проблем с <span lang="en-us">
+<b>OSExit</b>. </span>При използваен на <span lang="en-us">OSRemoveTaskF </span>
+не се променяше стойноста на стековия указател на преместения&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+
+<p style="line-height: 150%; margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; 
+процес, като по точи начин той почваше да пише/записва в паметта на следващия.<span lang="bg"> 
+Беше открит след добавянето на модул</span>a</p>
+
+<p style="line-height: 150%; margin-top: 0; margin-bottom: 0">
+&nbsp;&nbsp;&nbsp; <b>USART</b> (<b>drivers/usart</b>, <b>
+<a href="../0.70/scr/drivers/usart/usart.inc">usart.inc</a></b> <span lang="bg">и
+</span><b><a href="../0.70/scr/drivers/usart/usart-api.inc">usart-api.inc</a></b>).</p>
+
+</body>
+
+</html>

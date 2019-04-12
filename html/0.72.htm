@@ -1,0 +1,84 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="bg">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>New Page 1</title>
+</head>
+
+<body>
+
+<p style="margin-top: 0; margin-bottom: 0"><span lang="bg"><b>02</b></span><b>.0<span lang="bg">2</span>.200<span lang="bg">7</span></b></p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; 3) Една нова идея 
+- след като написах функция за заделяне на блок памет ми се върти една идея... 
+Вместо досегашния статичен<br>
+&nbsp;&nbsp;&nbsp; подход на управление на масива на процесите да използвам 
+динамичен. Или по-точно свързан списък - при създаването на нов<br>
+&nbsp;&nbsp;&nbsp; процес се заделя блок памет в който ще се съхранява 
+най-критичните дани (оказатели към:SP, DS на процеса, към следващия<br>
+&nbsp;&nbsp;&nbsp; процес; TCNT0, таблици на прекъсванията и д.р). В общи линии 
+звучи добре, премахването на процес ще се свежда до<br>
+&nbsp;&nbsp;&nbsp; намирането му и пренасочване на предишния към слдеващия на 
+този който ще премахваме. Създаването също ще е елементарно.<br>
+&nbsp;&nbsp;&nbsp; Заделяне на основно парче памет за горе споменатите елементи, 
+вече търсенето на свободен блок рам ще си е кошмар но... Но<br>
+&nbsp;&nbsp;&nbsp; кошмар един път а не като сега - преизчисляване на SP, 
+пренасочването им и д.р. Но засега ще разчистя бъговете в сегашната<br>
+&nbsp;&nbsp;&nbsp; версия :)...</p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; 2) Докато 
+разчиствах бъговете за пореден път се убедих, че колкото по-сложна става една 
+система, толкова по-податлива на<br>
+&nbsp;&nbsp;&nbsp; бъгове е... В смисъл... Откъде на къде се иницялизираше 
+прекъсването (<span lang="en-us">INT1)</span>... Красота. Но не това ми е 
+тревогата а докъде да<br>
+<span lang="en-us">&nbsp;&nbsp;&nbsp; </span>стигна със<span lang="en-us">
+</span>нивото на забрани - при боравене с масива на процесите се получват 
+най-големи издънки<span lang="en-us">.</span> За функциите за заделяне<br>
+<span lang="en-us">&nbsp;&nbsp;&nbsp; </span>на памет, създаване, премахване на 
+процес - ясно, ще се забранява работата с<span lang="en-us"> </span>него чрез<span lang="en-us">
+</span>OSOpenTaskArrayF (и разрешава с<br>
+<span lang="en-us">&nbsp;&nbsp;&nbsp; </span>OSCloseTaskArrayF). Но примерно за 
+часта подържаща съобщенията ? Там дори да<span lang="en-us"> </span>запише в<span lang="en-us">
+</span>грешен процес няма да е голяма<br>
+<span lang="en-us">&nbsp;&nbsp;&nbsp; </span>трагедия но... Но ще реша 
+по-нататък. Сега имам по-големи планове но за тях в 3) :)</p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; 1) Както вече 
+споменах - беше премахнат бъг, а имено презаписване на стека на процеса 
+ипренасочване на SP към невалиден<br>
+&nbsp;&nbsp;&nbsp; адрес в OSRemoveTaskF (OSExitFromTaskL). Също и някаква много 
+не приятна самоинацилизация на таблицата на<br>
+&nbsp;&nbsp;&nbsp; прекъсванията...</p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0"><b>26.01.2007</b>:</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; - Основната част 
+от работата по функциите за заделяне и освобождаване на памет привърши. В 
+момента са в работещ вид но ще&nbsp; <br>
+&nbsp;&nbsp;&nbsp; трябва първо да минат през серия от тестове.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>26.01.2007</b>:</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; Промени по 
+файловете с декларации, отстраянаване на бъг наследен от <a href="0.71.htm">0.71</a> (и там беше 
+премахнат). Основни промени:</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+- Кагато се влзе в прекъсване, номера му не се предава като съобщение към процеса 
+а се записва в таблицата му.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+- Добавени са файловете <b><a href="../0.72/scr/kernel/memory.inc">memory<span lang="en-us">.inc</span></a></b><span lang="en-us"> </span>и
+<b><a href="../0.72/scr/kernel/api/memory-api.inc">memory<span lang="en-us">-api.inc</span></a></b><span lang="en-us"> - </span>както се досещата става дума за 
+система за управление на паметта.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Всеки процес може да задели до един блок памет с максимален размер 256<span lang="en-us">B.</span></p>
+
+</body>
+
+</html>
